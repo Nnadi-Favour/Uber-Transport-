@@ -3,7 +3,9 @@ body {
     background-image: url(./download.jpg);
     background-size: cover; 
     background-repeat: no-repeat; 
-    color: #000000; /* Black text */
+    color: #000000; 
+    margin: 0;
+    padding: 0; 
 }
 
 
@@ -11,7 +13,7 @@ body {
     width: 350px;
     margin: 0 auto;
     padding: 20px;
-    background-color: rgb(219, 219, 33); /* Blue background */
+    background-color: rgb(219, 219, 33);    
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -68,6 +70,9 @@ a:hover {
 }
 
 @media only screen and (max-width: 600px) {
+    body {
+        background-size: auto;
+    }
     .container {
         max-width: 300px;
         margin: 50px auto;
