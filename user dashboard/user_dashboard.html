@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="./user_dashboard.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="dropdown">
+        <button class="dropbtn" id="active">Profile Management</button>
+        <div class="dropdown-content">
+            <a href="#" onclick="showEditProfile()">Edit Profile</a>
+            <a href="#" onclick="showViewProfile()">View Profile</a>
+        </div>
+    </div><br>
+    <div class="nav_section">
+    <a href="./ride_booking.html">Ride Booking</a>
+    <a href="#real_time_tracking">Real-Time Tracking</a>
+    <a href="#fare_estimation">Fare Estimation</a>
+    <a href="#payment_processing">Payment Processing</a>
+    <a href="#driver_matching">Driver Matching</a>
+    <a href="#notifications">Notifications</a>
+    <a href="#booking_history">Booking History</a>
+</div>
+</div>
+
+<div id="editProfileForm" style="display: none;">
+    <h2>Edit Profile</h2>
+    <form id="profileForm" onsubmit="updateProfile(); return false;">
+        <input type="text" id="full_name" placeholder="Full Name" required><br><br>
+        <input type="email" id="email" placeholder="Email" required><br><br>
+        <input type="tel" id="phone" placeholder="Phone Number" required><br><br>
+        <label for="paymentMethod">Payment Method:</label>
+        <select id="paymentMethod" name="paymentMethod">
+            <option value="credit_card">Credit Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="bank_transfer">Bank Transfer</option>
+        </select><br><br>
+        <input type="text" id="preferences" placeholder="Preferences"><br><br>
+        <button type="submit">Update Profile</button>
+    </form>
+</div>
+
+<div id="viewProfile" style="display: none;">
+    <h2>View Profile</h2>
+    <p>Full Name: <span id="viewFullName"></span></p>
+    <p>Email: <span id="viewEmail"></span></p>
+    <p>Phone Number: <span id="viewPhone"></span></p>
+    <p>Payment Method: <span id="viewPaymentMethod"></span></p>
+    <p>Preferences: <span id="viewPreferences"></span></p>
+</div>
+<script src="./script.js">
+</script>
+
+</body>
+</html>

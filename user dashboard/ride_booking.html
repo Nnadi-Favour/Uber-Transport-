@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./user_dashboard.css">
+</head>
+<style>
+    /* Form container */
+#rideBookingForm {
+    max-width: 400px;
+     margin: 0 auto; 
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Form inputs */
+#rideBookingForm input,
+#rideBookingForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Submit button */
+#rideBookingForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(219, 219, 33);;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#rideBookingForm button:hover {
+    background-color: rgb(219, 219, 33);;
+}
+
+/* Optional: Center the form vertically and horizontally */
+ html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+<body>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">Profile Management</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="showEditProfile()">Edit Profile</a>
+                <a href="#" onclick="showViewProfile()">View Profile</a>
+            </div>
+        </div><br>
+        <div class="nav_section">
+        <a href="./ride_booking.html" id="active">Ride Booking</a>
+        <a href="#real_time_tracking">Real-Time Tracking</a>
+        <a href="#fare_estimation">Fare Estimation</a>
+        <a href="#payment_processing">Payment Processing</a>
+        <a href="#driver_matching">Driver Matching</a>
+        <a href="#notifications">Notifications</a>
+        <a href="#booking_history">Booking History</a>
+    </div>
+    </div><br><br><br><br><br><br>
+
+    <form id="rideBookingForm" onsubmit="bookRide(); return false;">
+        <label for="pickupLocation">Pickup Location:</label>
+        <input type="text" id="pickupLocation" required><br><br>
+    
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" required><br><br>
+    
+        <label for="vehicleType">Vehicle Type:</label>
+        <select id="vehicleType" required>
+            <option value="sedan">Sedan</option>
+            <option value="SUV">SUV</option>
+            <option value="luxury">Luxury</option>
+        </select><br><br>
+    
+        <button type="submit">Book Ride</button>
+    </form>
+    <script>
+        function bookRide() {
+    var pickupLocation = document.getElementById('pickupLocation').value;
+    var destination = document.getElementById('destination').value;
+    var vehicleType = document.getElementById('vehicleType').value;
+
+    // Here you can implement the logic to process the ride booking request
+    // For now, let's log the details to the console
+    console.log("Booking details:");
+    console.log("Pickup Location:", pickupLocation);
+    console.log("Destination:", destination);
+    console.log("Vehicle Type:", vehicleType);
+
+    // After processing, you can display a confirmation message or redirect the user to a confirmation page
+}
+
+    </script>
+    
+</body>
+</html>
