@@ -24,21 +24,29 @@
     </div>
 
     <script>
+        var users = [
+            { email: 'nnadifavour2745@gmail.com', password: 'nnadifavour@2745' },
+            { email: 'user2@example.com', password: 'password2' },
+            { email: 'user3@example.com', password: 'password3' },
+            // Add more users as needed
+        ];
+
         function login() {
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
             var loader = document.getElementById('loader');
 
-            // Example hardcoded credentials (replace with your own logic)
-            var validEmail = 'nnadifavour2745@gmail.com';
-            var validPassword = 'nnadifavour@2745';
+            // Check if the entered credentials match any user
+            var isValidUser = users.some(function(user) {
+                return user.email === email && user.password === password;
+            });
 
-            if (email === validEmail && password === validPassword) {
+            if (isValidUser) {
                 // Show loader
                 loader.style.display = 'block';
                 // Redirect to home page after 1 second delay
                 setTimeout(function() {
-                    window.location.href = 'user dashboard/user_dashboard.html';
+                    window.location.href = 'user_dashboard/user_dashboard.html';
                 }, 1000);
             } else {
                 // Failed login
