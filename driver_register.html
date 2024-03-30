@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Registration</title>
+    <link rel="stylesheet" href="./style2.css"> 
+    
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to Uber Transport</h2>
+        <p>Drive with Uber Transport and earn money on your schedule.</p>
+        <h5 style="color: white;">Sign up to drive.</h5>
+        
+        <form id="registrationForm" onsubmit="register(); return false;">
+            <!-- Personal Information -->
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="date" id="dob" placeholder="Date of Birth" required>
+            <select id="gender" required>
+                <option value="" disabled selected>Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+
+            <!-- Identification Documents -->
+            <input type="text" id="licenseNumber" placeholder="Driver's License Number" required>
+            <input type="date" id="licenseExpiration" placeholder="License Expiration Date" required>
+            <!-- Include file input for license scan/photo -->
+
+            <!-- Vehicle Information -->
+            <input type="text" id="vehicleMake" placeholder="Vehicle Make" required>
+            <input type="text" id="vehicleModel" placeholder="Vehicle Model" required>
+            <input type="number" id="vehicleYear" placeholder="Vehicle Year" required>
+            <input type="text" id="vehicleColor" placeholder="Vehicle Color" required>
+            <input type="text" id="licensePlate" placeholder="License Plate Number" required>
+            <!-- Include file input for vehicle registration documents and insurance -->
+
+            <!-- Background Information -->
+            <!-- Add checkboxes or toggle buttons for background check consent, criminal history disclosure, etc. -->
+
+            <!-- Financial Information -->
+            <input type="text" id="bankAccount" placeholder="Bank Account Details" required>
+            <input type="text" id="taxId" placeholder="Tax Identification Number" required>
+
+            <!-- Other Documentation -->
+            <!-- Include file inputs for proof of residency, insurance coverage, vehicle inspection report -->
+
+            <!-- Agreements and Policies -->
+            <!-- Add checkboxes for driver agreement, privacy policy acknowledgment, etc. -->
+
+            <!-- Training and Certifications -->
+            <!-- Add checkboxes for completion of driver training courses, additional certifications -->
+
+            <!-- Emergency Contact Information -->
+            <input type="text" id="emergencyContactName" placeholder="Emergency Contact Name" required>
+            <input type="tel" id="emergencyContactPhone" placeholder="Emergency Contact Phone" required>
+
+            <!-- Preferences and Settings -->
+            <input type="text" id="preferredLanguage" placeholder="Preferred Language" required>
+            <input type="text" id="preferredPayment" placeholder="Preferred Payment Method" required>
+
+            <!-- Photos -->
+            <!-- Include file input for profile photo and photos of the vehicle -->
+
+            <!-- Additional Information -->
+            <!-- Add any additional questions or information fields -->
+
+            <button type="submit">Register</button>
+            <div class="loader" id="loader"></div>
+        </form>
+        <p>Already registered? <a href="./driver_login.html ">Login here</a></p>
+        <p id="errorMessage" style="display: none; color: red;"></p>
+    </div>
+
+    <script>
+        function register() {
+            // Collect form data here
+            var fullName = document.getElementById('fullName').value;
+            var dob = document.getElementById('dob').value;
+            var gender = document.getElementById('gender').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var licenseNumber = document.getElementById('licenseNumber').value;
+            var licenseExpiration = document.getElementById('licenseExpiration').value;
+            var vehicleMake = document.getElementById('vehicleMake').value;
+            var vehicleModel = document.getElementById('vehicleModel').value;
+            var vehicleYear = document.getElementById('vehicleYear').value;
+            var vehicleColor = document.getElementById('vehicleColor').value;
+            var licensePlate = document.getElementById('licensePlate').value;
+            var bankAccount = document.getElementById('bankAccount').value;
+            var taxId = document.getElementById('taxId').value;
+            var emergencyContactName = document.getElementById('emergencyContactName').value;
+            var emergencyContactPhone = document.getElementById('emergencyContactPhone').value;
+            var preferredLanguage = document.getElementById('preferredLanguage').value;
+            var preferredPayment = document.getElementById('preferredPayment').value;
+            var loader = document.getElementById('loader');
+
+            // Example validation (replace with your own logic)
+            if (fullName === '' || dob === '' || gender === '' || email === '' || phone === '' || licenseNumber === '' || 
+                licenseExpiration === '' || vehicleMake === '' || vehicleModel === '' || vehicleYear === '' || 
+                vehicleColor === '' || licensePlate === '' || bankAccount === '' || taxId === '' || 
+                emergencyContactName === '' || emergencyContactPhone === '' || preferredLanguage === '' || 
+                preferredPayment === '') {
+                document.getElementById('errorMessage').innerText = 'All fields are required.';
+                document.getElementById('errorMessage').style.display = 'block';
+                return;
+            }
+
+            // Show loader
+            loader.style.display = 'block';
+
+            // Simulate registration process (replace with your own logic)
+            setTimeout(function() {
+                alert('Registration successful!');
+                // Redirect to login page after 1 second delay
+                setTimeout(function() {
+                    window.location.href = 'driver_login.html';
+                }, 1000);
+            }, 1000); // Simulating a delay of 2 seconds for registration process
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./style2.css">
+    
+    
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome back, Driver!</h2>
+        <p>Log in to your account to start driving with Uber Transport.</p>
+        
+        <form id="loginForm" onsubmit="login(); return false;">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <div class="loader" id="loader"></div>
+        </form>
+        <p>Don't have an account? <a href="./driver_register.html">Register here</a></p>
+        <p id="errorMessage" style="display: none; color: red;"></p>
+    </div>
+
+    <script>
+        function login() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var loader = document.getElementById('loader');
+
+           
+            var validEmail = 'nnadifavour2745@gmail.com';
+            var validPassword = 'nnadifavour@2745';
+
+            if (email === validEmail && password === validPassword) {
+
+                // Show loader
+                loader.style.display = 'block';
+                // Redirect to home page after 1 second delay
+                setTimeout(function() {
+                    window.location.href = 'home.html';
+                }, 1000);
+            } else {
+                // Failed login
+                document.getElementById('errorMessage').innerText = 'Invalid email or password.';
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

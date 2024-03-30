@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(./download.jpg);
+    background-size: cover; 
+    background-repeat: repeat-x; 
+    color: #000000; /* Black text */
+}
+.container {
+    max-width: 400px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(219, 219, 33); 
+  
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.container h2,p,h5{
+    text-align: center;
+}
+
+/* Style for input fields */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    
+}
+
+/* Style for the submit button */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #000000;;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Style for the loader */
+.loader {
+    display: none;
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #000000; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Style for error message */
+#errorMessage {
+    color: red;
+    display: none;
+}
+
+p {
+    text-align: center;
+}
+
+a {
+    color: #ffffff; /* White link text */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+@media only screen and (max-width: 600px) {
+    .container {
+        max-width: 300px;
+        margin: 50px auto;
+    }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./style.css">
+    
+    
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to Uber Transport</h2>
+        <p>Get where you need to go with Uber Transport.</p>
+        <h5 style="color: white;">Already have an account, login.</h5>
+        <form id="loginForm" onsubmit="login(); return false;">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <div class="loader" id="loader"></div>
+        </form>
+        <p>Don't have an account? <a href="register.html">Register here</a></p>
+        <p id="errorMessage" style="display: none; color: red;"></p>
+    </div>
+
+    <script>
+        function login() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var loader = document.getElementById('loader');
+
+            // Example hardcoded credentials (replace with your own logic)
+            var validEmail = 'nnadifavour2745@gmail.com';
+            var validPassword = 'nnadifavour@2745';
+
+            if (email === validEmail && password === validPassword) {
+                // Show loader
+                loader.style.display = 'block';
+                // Redirect to home page after 1 second delay
+                setTimeout(function() {
+                    window.location.href = 'user dashboard/user_dashboard.html';
+                }, 1000);
+            } else {
+                // Failed login
+                document.getElementById('errorMessage').innerText = 'Invalid email or password.';
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
