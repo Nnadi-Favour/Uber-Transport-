@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification</title>
+   <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Verification</h2>
+        <p>Enter the code below and accept the privacy policy to continue.</p>
+
+        <form id="verificationForm" onsubmit="verify(); return false;">
+            <!-- Code Input -->
+            <input type="text" id="codeInput" placeholder="Enter code" required>
+            <div id="codeDisplay"></div>
+            <!-- Verification Message -->
+            <p id="verificationMessage" style="display: none;"></p>
+            <!-- Checkbox for Privacy Policy -->
+            <input type="checkbox" id="privacyPolicyCheckbox" required>
+            <label for="privacyPolicyCheckbox">I accept the <a href="./privacy.html" target="_blank">privacy policy</a></label>
+            <!-- Error Message -->
+            <p id="errorMessage" style="display: none; color: red;"></p>
+            <!-- Submit Button -->
+            <button type="submit">Verify</button>
+            <!-- Loader -->
+            <div class="loader" id="loader"></div>
+        </form>
+    </div>
+
+    <script>
+        function generateCode() {
+            var code = Math.random().toString(36).substring(2, 8).toUpperCase();
+            document.getElementById('codeDisplay').innerText = code;
+        }
+
+        function verify() {
+            var privacyPolicyCheckbox = document.getElementById('privacyPolicyCheckbox');
+            var codeInput = document.getElementById('codeInput').value;
+            var loader = document.getElementById('loader');
+
+            if (!privacyPolicyCheckbox.checked) {
+                document.getElementById('errorMessage').innerText = 'Please accept the privacy policy.';
+                document.getElementById('errorMessage').style.display = 'block';
+                return;
+            }
+
+            // Verify the entered code against the displayed code
+            var displayedCode = document.getElementById('codeDisplay').innerText;
+            if (codeInput !== displayedCode) {
+                document.getElementById('errorMessage').innerText = 'Incorrect verification code.';
+                document.getElementById('errorMessage').style.display = 'block';
+                return;
+            }
+
+            // Show loader
+            loader.style.display = 'block';
+
+            // Simulate verification process (replace with your own logic)
+            setTimeout(function() {
+                document.getElementById('verificationForm').reset();
+                document.getElementById('codeDisplay').innerText = '';
+                document.getElementById('verificationMessage').innerText = 'Verification successful!';
+                document.getElementById('verificationMessage').style.display = 'block';
+                // Optional: Reset checkbox
+                privacyPolicyCheckbox.checked = false;
+                // Hide loader after 1 second delay
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                    // Redirect to next page after verification
+                    window.location.href = 'user dashboard/user_dashboard.html';
+                }, 1000);
+            }, 1000); // Simulating a delay of 1 second for verification process
+        }
+
+        // Generate code when the page loads
+        generateCode();
+    </script>
+</body>
+</html>

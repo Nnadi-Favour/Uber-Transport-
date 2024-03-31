@@ -77,12 +77,15 @@ function verify() {
         // Hide loader after 1 second delay
         setTimeout(function() {
             loader.style.display = 'none';
+            // Redirect to next page after verification
+            window.location.href = 'privacy policy.html';
         }, 1000);
     }, 1000); // Simulating a delay of 1 second for verification process
 }
 
 // Generate code when the page loads
 generateCode();
+
 
 </script>
 </body>
