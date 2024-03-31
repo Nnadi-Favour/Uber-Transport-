@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Driver Registration</title>
     <link rel="stylesheet" href="./style2.css"> 
-    
 </head>
 <body>
     <div class="container">
@@ -29,7 +28,6 @@
             <!-- Identification Documents -->
             <input type="text" id="licenseNumber" placeholder="Driver's License Number" required>
             <input type="date" id="licenseExpiration" placeholder="License Expiration Date" required>
-            <!-- Include file input for license scan/photo -->
 
             <!-- Vehicle Information -->
             <input type="text" id="vehicleMake" placeholder="Vehicle Make" required>
@@ -37,7 +35,6 @@
             <input type="number" id="vehicleYear" placeholder="Vehicle Year" required>
             <input type="text" id="vehicleColor" placeholder="Vehicle Color" required>
             <input type="text" id="licensePlate" placeholder="License Plate Number" required>
-            <!-- Include file input for vehicle registration documents and insurance -->
 
             <!-- Background Information -->
             <!-- Add checkboxes or toggle buttons for background check consent, criminal history disclosure, etc. -->
@@ -45,15 +42,6 @@
             <!-- Financial Information -->
             <input type="text" id="bankAccount" placeholder="Bank Account Details" required>
             <input type="text" id="taxId" placeholder="Tax Identification Number" required>
-
-            <!-- Other Documentation -->
-            <!-- Include file inputs for proof of residency, insurance coverage, vehicle inspection report -->
-
-            <!-- Agreements and Policies -->
-            <!-- Add checkboxes for driver agreement, privacy policy acknowledgment, etc. -->
-
-            <!-- Training and Certifications -->
-            <!-- Add checkboxes for completion of driver training courses, additional certifications -->
 
             <!-- Emergency Contact Information -->
             <input type="text" id="emergencyContactName" placeholder="Emergency Contact Name" required>
@@ -63,16 +51,11 @@
             <input type="text" id="preferredLanguage" placeholder="Preferred Language" required>
             <input type="text" id="preferredPayment" placeholder="Preferred Payment Method" required>
 
-            <!-- Photos -->
-            <!-- Include file input for profile photo and photos of the vehicle -->
-
-            <!-- Additional Information -->
-            <!-- Add any additional questions or information fields -->
-
+            <!-- Button to Submit -->
             <button type="submit">Register</button>
             <div class="loader" id="loader"></div>
         </form>
-        <p>Already registered? <a href="./driver_login.html ">Login here</a></p>
+        <p>Already registered? <a href="./driver_login.html">Login here</a></p>
         <p id="errorMessage" style="display: none; color: red;"></p>
     </div>
 
@@ -99,7 +82,7 @@
             var preferredPayment = document.getElementById('preferredPayment').value;
             var loader = document.getElementById('loader');
 
-            // Example validation (replace with your own logic)
+            // Example validation 
             if (fullName === '' || dob === '' || gender === '' || email === '' || phone === '' || licenseNumber === '' || 
                 licenseExpiration === '' || vehicleMake === '' || vehicleModel === '' || vehicleYear === '' || 
                 vehicleColor === '' || licensePlate === '' || bankAccount === '' || taxId === '' || 
@@ -110,17 +93,38 @@
                 return;
             }
 
+            // Store user data in local storage
+            var driverData = {
+                fullName: fullName,
+                dob: dob,
+                gender: gender,
+                email: email,
+                phone: phone,
+                licenseNumber: licenseNumber,
+                licenseExpiration: licenseExpiration,
+                vehicleMake: vehicleMake,
+                vehicleModel: vehicleModel,
+                vehicleYear: vehicleYear,
+                vehicleColor: vehicleColor,
+                licensePlate: licensePlate,
+                bankAccount: bankAccount,
+                taxId: taxId,
+                emergencyContactName: emergencyContactName,
+                emergencyContactPhone: emergencyContactPhone,
+                preferredLanguage: preferredLanguage,
+                preferredPayment: preferredPayment
+            };
+
+            localStorage.setItem('driverData', JSON.stringify(driverData));
+
             // Show loader
             loader.style.display = 'block';
 
             // Simulate registration process (replace with your own logic)
             setTimeout(function() {
-                alert('Registration successful!');
-                // Redirect to login page after 1 second delay
-                setTimeout(function() {
-                    window.location.href = 'driver_login.html';
-                }, 1000);
-            }, 1000); // Simulating a delay of 2 seconds for registration process
+                // Redirect to login page after registration
+                window.location.href = 'driver_login.html';
+            }, 1000); // Simulating a delay of 1 second for registration process
         }
     </script>
 

@@ -23,37 +23,46 @@
         <p>Already have an account? <a href="login.html">Login here</a></p>
         <p id="errorMessage" style="display: none; color: red;"></p>
     </div>
-
     <footer>
         <p>&copy; 2024 Uber Transport. All rights reserved.</p>
     </footer>
 
+    
     <script>
-       function register() {
-    var fullName = document.getElementById('fullName').value;
-    var email = document.getElementById('email').value;
-    var phone = document.getElementById('phone').value;
-    var password = document.getElementById('password').value;
-    var loader = document.getElementById('loader');
+        function register() {
+            var fullName = document.getElementById('fullName').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var password = document.getElementById('password').value;
+            var loader = document.getElementById('loader');
 
-    // Example validation (replace with your own logic)
-    if (fullName === '' || email === '' || phone === '' || password === '') {
-        document.getElementById('errorMessage').innerText = 'All fields are required.';
-        document.getElementById('errorMessage').style.display = 'block';
-        return;
-    }
+            // Example validation (replace with your own logic)
+            if (fullName === '' || email === '' || phone === '' || password === '') {
+                document.getElementById('errorMessage').innerText = 'All fields are required.';
+                document.getElementById('errorMessage').style.display = 'block';
+                return;
+            }
 
-    // Show loader
-    loader.style.display = 'block';
+            // Store user data in local storage
+            var user = { fullName: fullName, email: email, phone: phone, password: password };
+            localStorage.setItem('user', JSON.stringify(user));
 
-    // Simulate registration process (replace with your own logic)
-    setTimeout(function() {
-        // Redirect to login page after 1 second delay
-        window.location.href = 'login.html';
-    }, 1000); // Simulating a delay of 2 seconds for registration process
-}
+            // Show loader
+            loader.style.display = 'block';
 
+            // Simulate registration process (replace with your own logic)
+            setTimeout(function() {
+                alert('Registration successful!');
+                // Redirect to login page after 1 second delay
+                setTimeout(function() {
+                    window.location.href = 'login.html';
+                }, 1000);
+            }, 1000); // Simulating a delay of 2 seconds for registration process
+        }
     </script>
+
+
+   
 
 </body>
 </html>

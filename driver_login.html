@@ -6,7 +6,58 @@
     <title>Login</title>
     <link rel="stylesheet" href="./style2.css">
     
-    
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./style2.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome back, Driver!</h2>
+        <p>Log in to your account to start driving with Uber Transport.</p>
+        
+        <form id="loginForm" onsubmit="login(); return false;">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <div class="loader" id="loader"></div>
+        </form>
+        <p>Don't have an account? <a href="./driver_register.html">Register here</a></p>
+        <p id="errorMessage" style="display: none; color: red;"></p>
+    </div>
+
+    <script>
+        function login() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var loader = document.getElementById('loader');
+
+            // Retrieve driver data from local storage
+            var storedDriverData = JSON.parse(localStorage.getItem('driverData'));
+
+            // Check if the entered email matches any stored driver email
+            if (storedDriverData && storedDriverData.email === email) {
+                // Show loader
+                loader.style.display = 'block';
+
+                // Simulate login process (replace with your own logic)
+                setTimeout(function() {
+                    // Redirect to home page after successful login
+                    window.location.href = 'driver_dashboard.html';
+                }, 1000); // Simulating a delay of 1 second for login process
+            } else {
+                // Failed login
+                document.getElementById('errorMessage').innerText = 'Invalid email or password.';
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
+
 </head>
 <body>
     <div class="container">

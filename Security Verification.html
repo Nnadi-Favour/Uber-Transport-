@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Verification</title>
+    <link rel="stylesheet" href="./style.css"> 
+    
+</head>
+<style>
+    .loader {
+        margin: 20px auto;
+    }
+</style>
+<body>
+    <div class="container">
+        <h2>Security Verification </h2>
+        <p>Please check the box below to verify that you are not a robot.</p>
+       
+        <form id="verificationForm" onsubmit="verify(); return false;">
+            <label>
+                <input type="checkbox" id="robotCheckbox" required>
+                I'm not a robot
+            </label>
+            <br>
+            <label for="codeInput">Enter the code displayed below:</label>
+            <input type="text" id="codeInput" required>
+            <div id="codeDisplay"></div>
+            <button type="submit">Submit</button>
+            <div class="loader" id="loader"></div>
+        </form>
+        <p id="verificationMessage" style="display: none; color: green;"></p>
+        <p id="errorMessage" style="display: none; color: red;"></p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Uber Transport. All rights reserved.</p>
+    </footer>
+
+   
+<script>
+    function generateCode() {
+    var code = Math.random().toString(36).substring(2, 8).toUpperCase();
+    document.getElementById('codeDisplay').innerText = code;
+}
+
+function verify() {
+    var robotCheckbox = document.getElementById('robotCheckbox');
+    var codeInput = document.getElementById('codeInput').value;
+    var loader = document.getElementById('loader');
+
+    if (!robotCheckbox.checked) {
+        document.getElementById('errorMessage').innerText = 'Please check the box to verify that you are not a robot.';
+        document.getElementById('errorMessage').style.display = 'block';
+        return;
+    }
+
+    // Verify the entered code against the displayed code
+    var displayedCode = document.getElementById('codeDisplay').innerText;
+    if (codeInput !== displayedCode) {
+        document.getElementById('errorMessage').innerText = 'Incorrect verification code.';
+        document.getElementById('errorMessage').style.display = 'block';
+        return;
+    }
+
+    // Show loader
+    loader.style.display = 'block';
+
+    // Simulate verification process (replace with your own logic)
+    setTimeout(function() {
+        document.getElementById('verificationForm').reset();
+        document.getElementById('codeDisplay').innerText = '';
+        document.getElementById('verificationMessage').innerText = 'Verification successful!';
+        document.getElementById('verificationMessage').style.display = 'block';
+        // Optional: Reset checkbox
+        robotCheckbox.checked = false;
+        // Hide loader after 1 second delay
+        setTimeout(function() {
+            loader.style.display = 'none';
+        }, 1000);
+    }, 1000); // Simulating a delay of 1 second for verification process
+}
+
+// Generate code when the page loads
+generateCode();
+
+</script>
+</body>
+</html>
